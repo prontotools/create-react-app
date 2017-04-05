@@ -58,6 +58,8 @@ module.exports = {
     require.resolve('react-dev-utils/webpackHotDevClient'),
     // We ship a few polyfills by default:
     require.resolve('./polyfills'),
+    // react-hot-loader v3 patch
+    'react-hot-loader/patch',
     // Finally, this is your app's code:
     paths.appIndexJs
     // We include the app code last so that if there is a runtime error during
@@ -93,7 +95,8 @@ module.exports = {
     alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-      'react-native': 'react-native-web'
+      'react-native': 'react-native-web',
+      'simplesat-constants': path.join(__dirname, 'constants.dev')
     }
   },
   resolveLoader: {
@@ -135,7 +138,7 @@ module.exports = {
           // Webpack 2 fixes this, but for now we include this hack.
           // https://github.com/facebookincubator/create-react-app/issues/1713
           /\.(js|jsx)(\?.*)?$/,
-          /\.css$/,
+          /\.s?css$/,
           /\.json$/,
           /\.svg$/
         ],
@@ -167,8 +170,18 @@ module.exports = {
       // In production, we use a plugin to extract that CSS to a file, but
       // in development "style" loader enables hot editing of CSS.
       {
-        test: /\.css$/,
-        loader: 'style!css?importLoaders=1!postcss'
+        test: /\.s?css$/,
+        include: [paths.appSrc],
+        exclude: [path.join(paths.appSrc, 'common/style')],
+        loader: 'style!css?localIdentName=[local]__[path][name]__[hash:base64:5]&modules&importLoaders=1!postcss!sass',
+      },
+      {
+        test: /\.s?css$/,
+        include: [
+          paths.appNodeModules,
+          path.join(paths.appSrc, 'common/style')
+        ],
+        loader: 'style!css!postcss!sass',
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
