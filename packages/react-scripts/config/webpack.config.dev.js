@@ -34,6 +34,10 @@ var publicUrl = '';
 // Get environment variables to inject into our app.
 var env = getClientEnvironment(publicUrl);
 
+// @prontotools config
+const StyleLintPlugin = require('stylelint-webpack-plugin')
+const rootScriptDir = path.resolve(__dirname, '..')
+
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
@@ -245,7 +249,12 @@ module.exports = {
     // to restart the development server for Webpack to discover it. This plugin
     // makes the discovery automatic so you don't have to restart.
     // See https://github.com/facebookincubator/create-react-app/issues/186
-    new WatchMissingNodeModulesPlugin(paths.appNodeModules)
+    new WatchMissingNodeModulesPlugin(paths.appNodeModules),
+    // @prontotools config
+    new StyleLintPlugin({
+      configFile: path.resolve(rootScriptDir, '.stylelintrc'),
+      files: 'src/**/*.s?(a|c)ss'
+    })
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

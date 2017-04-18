@@ -55,6 +55,10 @@ const extractTextPluginOptions = shouldUseRelativeAssetPaths
   ? { publicPath: Array(cssFilename.split('/').length).join('../') }
   : undefined;
 
+// @prontotools config
+const StyleLintPlugin = require('stylelint-webpack-plugin')
+const rootScriptDir = path.resolve(__dirname, '..')
+
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
 // The development configuration is different and lives in a separate file.
@@ -271,6 +275,11 @@ module.exports = {
     // having to parse `index.html`.
     new ManifestPlugin({
       fileName: 'asset-manifest.json'
+    }),
+    // @prontotools config
+    new StyleLintPlugin({
+      configFile: path.resolve(rootScriptDir, '.stylelintrc'),
+      files: 'src/**/*.s?(a|c)ss'
     })
   ],
   // Some libraries import Node modules but don't use them in the browser.
