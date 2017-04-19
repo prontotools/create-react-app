@@ -57,7 +57,6 @@ const extractTextPluginOptions = shouldUseRelativeAssetPaths
 
 // @prontotools config
 const StyleLintPlugin = require('stylelint-webpack-plugin')
-const rootScriptDir = path.resolve(__dirname, '..')
 
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
@@ -278,7 +277,7 @@ module.exports = {
     }),
     // @prontotools config
     new StyleLintPlugin({
-      configFile: path.resolve(rootScriptDir, '.stylelintrc'),
+      configFile: path.resolve(paths.rootDir, '.stylelintrc'),
       files: 'src/**/*.s?(a|c)ss'
     })
   ],

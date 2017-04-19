@@ -86,7 +86,9 @@ module.exports = {
   appNodeModules: resolveApp('node_modules'),
   nodePaths: nodePaths,
   publicUrl: getPublicUrl(resolveApp('package.json')),
-  servedPath: getServedPath(resolveApp('package.json'))
+  servedPath: getServedPath(resolveApp('package.json')),
+  // @prontotools
+  rootDir: path.resolve('..'),
 };
 
 // @remove-on-eject-begin
@@ -112,6 +114,8 @@ module.exports = {
   // These properties only exist before ejecting:
   ownPath: resolveOwn('.'),
   ownNodeModules: resolveOwn('node_modules'), // This is empty on npm 3
+  // @prontotools
+  rootDir: path.resolve(__dirname, '..'),
 };
 
 var ownPackageJson = require('../package.json');
@@ -137,6 +141,8 @@ if (!reactScriptsLinked && __dirname.indexOf(path.join('packages', 'react-script
     // These properties only exist before ejecting:
     ownPath: resolveOwn('.'),
     ownNodeModules: resolveOwn('node_modules'),
+    // @prontotools
+    rootDir: path.resolve(__dirname, '..'),
   };
 }
 // @remove-on-eject-end

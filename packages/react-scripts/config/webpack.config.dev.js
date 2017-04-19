@@ -36,7 +36,6 @@ var env = getClientEnvironment(publicUrl);
 
 // @prontotools config
 const StyleLintPlugin = require('stylelint-webpack-plugin')
-const rootScriptDir = path.resolve(__dirname, '..')
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
@@ -252,7 +251,7 @@ module.exports = {
     new WatchMissingNodeModulesPlugin(paths.appNodeModules),
     // @prontotools config
     new StyleLintPlugin({
-      configFile: path.resolve(rootScriptDir, '.stylelintrc'),
+      configFile: path.resolve(paths.rootDir, '.stylelintrc'),
       files: 'src/**/*.s?(a|c)ss'
     })
   ],

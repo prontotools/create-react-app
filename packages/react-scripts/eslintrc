@@ -1,3 +1,25 @@
 {
-  "extends": "react-app"
+  "extends": [
+    "react-app",
+    "standard",
+    "standard-react",
+    "plugin:lodash/recommended"
+  ],
+  "plugins": [
+    "lodash"
+  ],
+  "rules": {
+    "no-unused-vars": ["error", {
+      "vars": "all",
+      "args": "after-used"
+    }],
+    "space-before-function-paren": ["error", "never"],
+    "object-curly-spacing": ["error", "always"],
+    // disable some eslint-plugin-lodash rules
+    "lodash/prefer-lodash-method": "off",
+    "lodash/prefer-includes": "off",
+    "lodash/prefer-lodash-typecheck": "off",
+    "lodash/prefer-constant": "off",
+    "lodash/import-scope": "off",
+  }
 }
