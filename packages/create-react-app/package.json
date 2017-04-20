@@ -29,5 +29,6 @@
     "tar-pack": "^3.4.0",
     "tmp": "0.0.31",
     "validate-npm-package-name": "^3.0.0"
-  }
+  },
+  "private": true
 }
