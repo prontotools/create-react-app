@@ -17,7 +17,9 @@
     "config",
     "scripts",
     "template",
-    "utils"
+    "utils",
+    "eslintignore",
+    ".stylelintrc"
   ],
   "bin": {
     "react-scripts": "./bin/react-scripts.js"
