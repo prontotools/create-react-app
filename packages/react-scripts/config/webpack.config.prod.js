@@ -278,7 +278,7 @@ module.exports = {
     // @prontotools config
     new StyleLintPlugin({
       configFile: path.resolve(paths.rootDir, '.stylelintrc'),
-      files: 'src/**/*.s?(a|c)ss'
+      files: 'src/**/*.+(sc|sa|c)ss'
     })
   ],
   // Some libraries import Node modules but don't use them in the browser.
