@@ -19,6 +19,11 @@
 // It would probably be more strict.
 
 module.exports = {
+  // @prontotools
+  extends: [
+    'standard',
+    'standard-react'
+  ],
   root: true,
 
   parser: 'babel-eslint',
@@ -214,6 +219,10 @@ module.exports = {
     // https://github.com/gajus/eslint-plugin-flowtype
     'flowtype/define-flow-type': 'warn',
     'flowtype/require-valid-file-annotation': 'warn',
-    'flowtype/use-flow-type': 'warn'
+    'flowtype/use-flow-type': 'warn',
+
+    // @prontotools
+    'space-before-function-paren': ['error', 'never'],
+    'object-curly-spacing': ['error', 'always']
   }
 };
