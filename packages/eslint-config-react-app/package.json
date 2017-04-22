@@ -1,6 +1,6 @@
 {
   "name": "@prontotools/eslint-config-react-app",
-  "version": "0.6.2",
+  "version": "0.6.3-alpha.1",
   "description": "ESLint configuration used by Create React App",
   "repository": "facebookincubator/create-react-app",
   "license": "BSD-3-Clause",
